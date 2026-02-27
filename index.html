@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chandana Harikantra</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-padding-top:90px;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(168,85,247,0.10), transparent 12%),
+        linear-gradient(135deg,#2c003e 0%,#0d001a 50%,#000 100%);
+    color:#f2f2f2;
+    line-height:1.6;
+    scroll-behavior:smooth;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(6px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{font-size:1.2rem;font-weight:700;}
+
+nav ul{list-style:none;display:flex;gap:22px;}
+
+nav a{
+    color:#e9e7ee;
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+    padding-bottom:4px;
+    transition:color .3s ease;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:2px;
+    background:#9333ea;
+    transition:width .3s ease;
+}
+
+nav a:hover::after{width:100%;}
+
+nav a.active{
+    color:#c084fc;
+}
+
+nav a.active::after{
+    width:100%;
+}
+
+/* HERO */
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:100px 60px;
+    flex-wrap:wrap;
+    min-height:88vh;
+}
+
+.hero-text{max-width:560px;}
+
+.hero-text h2{font-size:1.2rem;color:#c084fc;}
+
+.hero-text h1{font-size:2.6rem;margin:10px 0;}
+
+.hero-text p{margin-bottom:20px;color:#d7d4dd;}
+
+.buttons a{
+    display:inline-block;
+    background:#7c3aed;
+    color:white;
+    padding:12px 24px;
+    margin-right:12px;
+    border-radius:8px;
+    font-weight:600;
+    text-decoration:none;
+    transition:background .3s ease, transform .2s ease;
+}
+
+.buttons a:hover{
+    background:#9333ea;
+    transform:translateY(-3px);
+}
+
+.hero img{
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    border:4px solid rgba(147,51,234,0.2);
+    object-fit:cover;
+}
+
+/* SECTIONS */
+section{padding:70px 60px;}
+
+.section-title{
+    font-size:1.8rem;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title::after{
+    content:"";
+    display:block;
+    width:50px;
+    height:3px;
+    background:#9333ea;
+    margin:10px auto 0;
+}
+
+/* GRID CARDS */
+.projects-grid,
+.certificates{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.project-item,
+.certificate-card{
+    background: rgba(255,255,255,0.03);
+    padding: 24px;
+    border-radius: 14px;
+    border: 1px solid rgba(168,85,247,0.15);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.project-item:hover,
+.certificate-card:hover{
+    transform: translateY(-6px);
+    border-color: #9333ea;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25);
+}
+
+.project-item h3,
+.certificate-card h3{
+    margin-bottom: 12px;
+}
+
+/* Updated Gradient Button (Matches Top Buttons) */
+.project-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #7c3aed, #9333ea);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.project-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.45);
+}
+
+
+
+/* ABOUT */
+.about p{
+    max-width:750px;
+    margin:auto;
+    text-align:center;
+    color:#e8e6ee;
+}
+
+/* CERTIFICATE BUTTON */
+.cert-btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 16px;
+    background:#7c3aed;
+    color:#fff;
+    border-radius:6px;
+    text-decoration:none;
+    font-size:0.9rem;
+    font-weight:600;
+    transition:background .3s ease, transform .2s ease;
+}
+
+.cert-btn:hover{
+    background:#9333ea;
+    transform:translateY(-2px);
+}
+
+.project-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #4f46e5;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.project-btn:hover {
+    background-color: #3730a3;
+}
+
+
+/* CONTACT */
+form{
+    max-width:550px;
+    margin:auto;
+    display:grid;
+    gap:15px;
+}
+
+input, textarea{
+    padding:12px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.03);
+    color:white;
+}
+
+textarea{min-height:120px;}
+
+button{
+    background:#7c3aed;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .3s ease;
+}
+
+button:hover{background:#9333ea;}
+
+.social-links{text-align:center;margin-top:25px;}
+
+.social-links a{
+    margin:0 10px;
+    color:white;
+    text-decoration:none;
+    transition:color .3s ease;
+}
+
+.social-links a:hover{color:#c084fc;}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.4);
+    margin-top:40px;
+}
+
+/* SCROLL ANIMATION */
+.fade-in{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .9s cubic-bezier(.4,0,.2,1),
+               transform .9s cubic-bezier(.4,0,.2,1);
+}
+
+.fade-in.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.project-item,
+.certificate-card{
+    opacity:0;
+    transform:translateY(20px);
+}
+
+.project-item.show,
+.certificate-card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:880px){
+    header, section{padding:40px 25px;}
+    .hero{flex-direction:column;text-align:center;}
+    .hero img{margin-top:30px;width:220px;height:220px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Chandana Portfolio</h1>
+<nav>
+<ul>
+<li><a href="#hero">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certificates">Certificates</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero fade-in" id="hero">
+<div class="hero-text">
+<h2>Computer Science (Data Science)</h2>
+<h1>Chandana Harikantra</h1>
+<p>Final-year engineering student specializing in Machine Learning, AI, and Data Analytics. Passionate about building intelligent data-driven systems.</p>
+<div class="buttons">
+<a href="Chandana.pdf" target="_blank">View Resume</a>
+<a href="#projects">View Projects</a>
+</div>
+</div>
+<img src="Profile.jpeg" alt="Chandana">
+</section>
+
+<section id="about" class="about fade-in">
+<h2 class="section-title">About Me</h2>
+<p>I am a final-year Computer Science (Data Science) student with CGPA 8.79. My interests include Artificial Intelligence, Machine Learning, and Data Analytics. I focus on building scalable solutions that solve real-world problems.</p>
+</section>
+
+<section id="skills" class="fade-in">
+<h2 class="section-title">Technical Skills</h2>
+<div class="projects-grid">
+<div class="project-item"><h3>Programming</h3><p>Python, Java, C</p></div>
+<div class="project-item"><h3>Databases</h3><p>SQL, MongoDB</p></div>
+<div class="project-item"><h3>Data Analysis</h3><p>Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn</p></div>
+<div class="project-item"><h3>Data Visualization</h3><p>Power BI, Tableau, Excel</p></div>
+<div class="project-item"><h3>Web Technologies</h3><p>HTML, CSS, JavaScript</p></div>
+<div class="project-item"><h3>Tools</h3><p>Git, GitHub, Jupyter Notebook, VS Code, Figma</p></div>
+</div>
+</section>
+
+<section id="projects" class="fade-in">
+<h2 class="section-title">Projects</h2>
+<div class="projects-grid">
+
+<div class="project-item">
+<h3>Customer Churn Prediction System</h3>
+<p>
+Built classification models using Logistic Regression and Random Forest.
+Performed EDA, feature engineering, and evaluated using Accuracy, Precision,
+Recall, F1-score, and Confusion Matrix.
+</p>
+
+<a href="https://nbviewer.org/github/Chandana24nh-eng/EDA-Customer-Churn-Analysis/blob/main/Exploratorary_Data_Analysis.ipynb"
+   target="_blank"
+   class="project-btn">
+   View Project
+
+</a>
+
+</div>
+
+<div class="project-item">
+<h3>ML-Based Career Assessment System</h3>
+<p>Developed AI-driven adaptive testing system using ML and NLP with feedback dashboards.</p>
+</div>
+</section>
+
+<section id="certificates" class="fade-in">
+<h2 class="section-title">Certificates</h2>
+<div class="certificates">
+<div class="certificate-card">
+<h3>Microsoft Certified – Power BI</h3>
+<p>Dashboard development, data modeling, DAX, BI reporting.</p>
+<a href="certificates/Microsoft Power BI.pdf" target="_blank" class="cert-btn">View Certificate</a>
+</div>
+<div class="certificate-card">
+    <h3>NPTEL – Cloud Computing</h3>
+    <p>
+        Successfully completed NPTEL technical course on Cloud Computing 
+        covering virtualization, distributed systems, and cloud service models.
+    </p>
+    <a href="certificates/Cloud Computing.pdf"
+       target="_blank"
+       class="cert-btn">
+       View Certificate
+    </a>
+</div>
+</section>
+
+<section id="contact" class="fade-in">
+<h2 class="section-title">Contact Me</h2>
+<form action="https://formspree.io/f/mqadgdzk" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="you@example.com" required>
+<textarea name="message" placeholder="Your message" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+<div class="social-links">
+<a href="https://github.com/Chandana24nh-eng" target="_blank">GitHub</a>
+<a href="#">LinkedIn</a>
+</div>
+</section>
+
+<footer>
+<p>© 2025 Chandana | All Rights Reserved</p>
+</footer>
+
+<script>
+// Scroll Reveal
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+},{threshold:0.2});
+
+document.querySelectorAll('.fade-in, .project-item, .certificate-card')
+.forEach(el=>observer.observe(el));
+
+// Active Navbar
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+let current = "";
+
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+
+if (pageYOffset >= sectionTop - sectionHeight / 3) {
+current = section.getAttribute("id");
+}
+});
+
+navLinks.forEach(link => {
+link.classList.remove("active");
+if (link.getAttribute("href") === "#" + current) {
+link.classList.add("active");
+}
+});
+});
+</script>
+
+</body>
+</html>
